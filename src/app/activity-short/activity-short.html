@@ -1,0 +1,10 @@
+<section class="listing">
+  <img
+    class="listing-photo"
+    [src]="activityShort().photoUrl"
+    alt="Picture from {{ activityShort().name }}"
+    crossorigin
+  />
+  <h2 class="listing-heading">{{ activityShort().name }}</h2>
+  <p class="listing-location">{{ activityShort().provider }}</p>
+</section>
