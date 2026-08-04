@@ -5,5 +5,7 @@
   </form>
 </section>
 <section class="results">
-  <app-activity-short [activityShort]="activity" />
+  @for (activityShort of activityList; track $index) {
+    <app-activity-short [activityShort]="activityShort" />
+  }
 </section>
