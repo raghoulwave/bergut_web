@@ -1,59 +1,221 @@
-# BergutWeb
+# Bergut Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.19.
+The Angular frontend for **Bergut** — a fitness analytics platform that integrates with Strava (and future providers such as Komoot) to visualize activities, track progress, and provide detailed performance insights.
 
-## Development server
+## Features
 
-To start a local development server, run:
+* 🔐 Secure authentication with the Bergut backend
+* 🚴 Browse and explore synced fitness activities
+* 📊 Interactive analytics dashboards
+* 🗺️ Activity maps and route visualization
+* 📈 Performance trends and personal records
+* ⚙️ User profile and provider management
+* 📱 Responsive UI for desktop and mobile browsers
+
+## Technology Stack
+
+* **Angular**
+* **TypeScript**
+* **SCSS**
+* **Angular Material**
+* **Chart.js / ng2-charts**
+* **Leaflet**
+* **RxJS**
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   ├── core/
+│   │   ├── auth/
+│   │   ├── guards/
+│   │   ├── interceptors/
+│   │   ├── layout/
+│   │   └── services/
+│   │
+│   ├── shared/
+│   │   ├── components/
+│   │   ├── models/
+│   │   ├── pipes/
+│   │   └── utils/
+│   │
+│   ├── features/
+│   │   ├── auth/
+│   │   ├── dashboard/
+│   │   ├── activities/
+│   │   ├── analytics/
+│   │   ├── profile/
+│   │   ├── providers/
+│   │   └── settings/
+│   │
+│   ├── app.config.ts
+│   └── app.routes.ts
+│
+├── assets/
+└── environments/
+```
+
+## Requirements
+
+* Node.js 22+
+* npm 10+
+* Angular CLI
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/bergut-frontend.git
+cd bergut-frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+## Running the Application
+
+Start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+or
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Open:
 
-```bash
-ng generate --help
+```
+http://localhost:4200
 ```
 
-## Building
+The application automatically reloads when source files change.
 
-To build the project run:
+## Build
+
+Create a production build:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The compiled application will be placed in:
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```text
+dist/
 ```
 
-## Running end-to-end tests
+## Environment Configuration
 
-For end-to-end (e2e) testing, run:
+Example `environment.ts`:
 
-```bash
-ng e2e
+```typescript
+export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:8080/api/v1'
+};
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Example `environment.prod.ts`:
 
-## Additional Resources
+```typescript
+export const environment = {
+    production: true,
+    apiUrl: 'https://api.bergut.app/api/v1'
+};
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Backend
+
+The frontend communicates exclusively with the Bergut Spring Boot REST API.
+
+Typical workflow:
+
+```text
+Angular
+    │
+    ▼
+Spring Boot REST API
+    │
+    ▼
+PostgreSQL
+    │
+    ▼
+Strava API
+```
+
+The frontend never communicates directly with Strava. All OAuth authentication, token management, synchronization, and analytics are handled by the backend.
+
+## Main Features
+
+### Dashboard
+
+* Weekly and monthly activity summaries
+* Distance, time, and elevation statistics
+* Recent activities
+* Personal records
+* Progress charts
+
+### Activities
+
+* Activity list
+* Detailed activity view
+* Interactive route map
+* Splits and statistics
+* Elevation profile
+
+### Analytics
+
+* Distance trends
+* Pace trends
+* Heart rate analysis
+* Elevation analysis
+* Historical progression
+* Personal records
+
+### Settings
+
+* User profile
+* Connected providers
+* Application preferences
+
+## Architecture
+
+The application follows a feature-based architecture using Angular standalone components.
+
+```text
+Features
+    │
+    ├── Dashboard
+    ├── Activities
+    ├── Analytics
+    ├── Profile
+    └── Settings
+```
+
+Each feature encapsulates its own pages, components, services, models, and routing.
+
+## Roadmap
+
+* ✅ Strava authentication
+* ✅ Activity synchronization
+* ⏳ Interactive analytics dashboard
+* ⏳ Personal record detection
+* ⏳ Training load analytics
+* ⏳ Activity filtering and search
+* ⏳ Komoot integration
+* ⏳ Garmin integration
+* ⏳ Progressive Web App (PWA)
+* ⏳ Native Android client
+
+## License
+
+This project is licensed under the MIT License.
